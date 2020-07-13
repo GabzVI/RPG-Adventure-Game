@@ -54,7 +54,6 @@ namespace RPG.Core
 
 		}
 
-
 	}
 }
 

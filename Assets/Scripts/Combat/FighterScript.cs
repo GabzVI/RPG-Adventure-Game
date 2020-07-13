@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Saving;
 using System;
 
 namespace RPG.Combat
 {
-	public class FighterScript : MonoBehaviour, IAction
+	public class FighterScript : MonoBehaviour, IAction, ISaveable
 	{
 
 		[SerializeField] float timeBetweenAttacks = 1.0f;
 		[SerializeField] Transform rightHandTransform = null;
 		[SerializeField] Transform leftHandTransform = null;
 		[SerializeField] Weapon defaultWeapon = null;
-
-	
 
 		Health target;
 		Animator animator;
@@ -24,10 +23,15 @@ namespace RPG.Combat
 		//Will enable characters to attack straight away.
 		float timeForLastAttack = Mathf.Infinity;
 
-		private void Start()
+		private void Awake()
 		{
-		   animator = GetComponent<Animator>();
-		   EquipWeapon(defaultWeapon);
+			animator = GetComponent<Animator>();
+
+			if(currentWeapon == null)
+			{
+				EquipWeapon(defaultWeapon);
+			}
+		    
 		}
 
 		private void Update()
@@ -86,7 +90,21 @@ namespace RPG.Combat
 		void Hit()
 		{
 			if(target == null) { return; }
-		   target.TakeDamage(currentWeapon.GetWeaponDamage());
+
+			if (currentWeapon.HasProjectile())
+			{
+				currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+			}
+			else
+			{
+				target.TakeDamage(currentWeapon.GetWeaponDamage());
+			}
+		  
+		}
+
+		void Shoot()
+		{
+			Hit();
 		}
 
 		private bool GetIsinRange()
@@ -121,6 +139,18 @@ namespace RPG.Combat
 			GetComponent<Animator>().SetTrigger("stopAttack");
 		}
 
+		public object CaptureState()
+		{
+			return currentWeapon.name;
+		}
+
+		public void RestoreState(object state)
+		{
+			string weaponName = (string)state;
+			//This will look for any weapon that has the name "Unarmed" or whatever string we pass into it, within the resources folder.
+			Weapon weapon = Resources.Load<Weapon>(weaponName);
+			EquipWeapon(weapon);
+		}
 	}
 }
 
