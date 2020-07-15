@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using RPG.Movement;
-using RPG.Saving;
 
 namespace RPG.Cinematics
 {
 	//In order for this to work use UnityEngine.Playables with allows us to access our cinematics and use it.
-	public class CinematicTrigger : MonoBehaviour, ISaveable
+	public class CinematicTrigger : MonoBehaviour
 	{
 		bool alreadyTriggered = false;
 
@@ -23,16 +22,6 @@ namespace RPG.Cinematics
 
 		}
 
-		public object CaptureState()
-		{
-			return alreadyTriggered;
-			
-		}
-
-		public void RestoreState(object state)
-		{
-			alreadyTriggered = (bool)state;
-		}
 	}
 }
 

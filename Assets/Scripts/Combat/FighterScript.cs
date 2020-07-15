@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
-using RPG.Saving;
 using System;
 
 namespace RPG.Combat
 {
-	public class FighterScript : MonoBehaviour, IAction, ISaveable
+	public class FighterScript : MonoBehaviour, IAction
 	{
 
 		[SerializeField] float timeBetweenAttacks = 1.0f;
@@ -137,19 +136,6 @@ namespace RPG.Combat
 		{
 			GetComponent<Animator>().ResetTrigger("Attack");
 			GetComponent<Animator>().SetTrigger("stopAttack");
-		}
-
-		public object CaptureState()
-		{
-			return currentWeapon.name;
-		}
-
-		public void RestoreState(object state)
-		{
-			string weaponName = (string)state;
-			//This will look for any weapon that has the name "Unarmed" or whatever string we pass into it, within the resources folder.
-			Weapon weapon = Resources.Load<Weapon>(weaponName);
-			EquipWeapon(weapon);
 		}
 	}
 }

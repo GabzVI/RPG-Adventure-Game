@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
-using RPG.Saving;
 
 namespace RPG.SceneManagement
 {
@@ -36,14 +35,12 @@ namespace RPG.SceneManagement
 
 		private IEnumerator TransitionScene()
 		{
-			if(sceneToLoad < 0)
+			if (sceneToLoad < 0)
 			{
 				Debug.LogError("Scene to Load has not been set");
 				yield break;
 			}
-
-
-			
+		
 
 			//This will be used to not delete the portal after the user has gone to the other scene as coroutine deletes it automatically.
 			DontDestroyOnLoad(gameObject);
@@ -52,18 +49,10 @@ namespace RPG.SceneManagement
 
 			yield return fader.FadeOut(FadeOutTimer);
 
-			//Save scene
-			SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-			wrapper.SaveScene();
-
 			yield return SceneManager.LoadSceneAsync(sceneToLoad);
-
-			wrapper.LoadScene();
 
 			Portal otherPortal = GetOtherPortal();
 			UpdatePlayer(otherPortal);
-
-			wrapper.SaveScene();
 
 			yield return new WaitForSeconds(FadeWaitTimer);
 			yield return fader.FadeIn(FadeInTimer);
@@ -74,12 +63,8 @@ namespace RPG.SceneManagement
 		private void UpdatePlayer(Portal otherPortal)
 		{
 			GameObject player = GameObject.FindWithTag("Player");
-
-			player.GetComponent<NavMeshAgent>().enabled = false;
 			//Warp sets the navmesh of the player to be equal to the position of the spawn point.
 			player.GetComponent<NavMeshAgent>().Warp(otherPortal.SpawnPoint.position);
-
-			player.GetComponent<NavMeshAgent>().enabled = true;
 
 		}
 

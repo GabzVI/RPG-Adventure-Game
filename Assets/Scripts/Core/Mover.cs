@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
-using RPG.Saving;
+
 
 namespace RPG.Movement
 {
-	public class Mover : MonoBehaviour, IAction, ISaveable
+	public class Mover : MonoBehaviour, IAction
 	{
 
 		[SerializeField] Transform target;
@@ -36,9 +36,9 @@ namespace RPG.Movement
 
 		public void MoveTo(Vector3 destination, float speedFraction)
 		{
-		   navmeshAgent.destination = destination;
-			navmeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-		   navmeshAgent.isStopped = false;
+		    navmeshAgent.destination = destination;
+		    navmeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+		    navmeshAgent.isStopped = false;
 		}
 
 		public void Cancel()
@@ -59,38 +59,6 @@ namespace RPG.Movement
 			GetComponent<Animator>().SetFloat("forwardSpeed", speed);
 		}
 
-
-		[System.Serializable]
-	    struct TransformSaveData
-		{
-			public SerializableVector3 position;
-			public SerializableVector3 rotation;
-		}
-
-		public object CaptureState()
-		{
-			//The return must return a vector3 that is serializable in order to work
-			TransformSaveData data = new TransformSaveData();
-			data.position = new SerializableVector3(transform.position);
-			data.rotation = new SerializableVector3(transform.eulerAngles);
-
-			return data;
-		}
-
-
-		// The restorestate runs before the start method and after awake method.
-		public void RestoreState(object state)
-		{
-			TransformSaveData data = (TransformSaveData)state;
-
-			GetComponent<NavMeshAgent>().enabled = false;
-
-			//This will look in the dictionary in data for the string "position", then converts the data to be a serializablevector3 and we are able to get its vector.
-			transform.position = data.position.ToVector();
-			transform.eulerAngles = data.rotation.ToVector();
-
-			GetComponent<NavMeshAgent>().enabled = true;
-		}
 	}
 }
 
