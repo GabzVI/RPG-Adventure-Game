@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace RPG.Resources
+namespace RPG.Stats
 {
 	public class Experience : MonoBehaviour
 	{
@@ -10,6 +10,11 @@ namespace RPG.Resources
 		public void GainExperience(float experience)
 		{
 			experiencePoints += experience;
+		}
+
+		public float GetExperiencePoints()
+		{
+			return experiencePoints;
 		}
 	
 	}
