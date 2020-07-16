@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Resources;
 using System;
 
 namespace RPG.Combat
@@ -85,6 +86,11 @@ namespace RPG.Combat
 			GetComponent<Animator>().SetTrigger("Attack");
 		}
 
+		public Health GetTarget()
+		{
+			return target;
+		}
+
 		//Animation Event 
 		void Hit()
 		{
@@ -92,11 +98,11 @@ namespace RPG.Combat
 
 			if (currentWeapon.HasProjectile())
 			{
-				currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+				currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
 			}
 			else
 			{
-				target.TakeDamage(currentWeapon.GetWeaponDamage());
+				target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
 			}
 		  
 		}

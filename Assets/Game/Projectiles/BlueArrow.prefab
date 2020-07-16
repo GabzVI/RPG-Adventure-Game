@@ -232,6 +232,11 @@ PrefabInstance:
       propertyPath: destroyOnHit.Array.data[0]
       value: 
       objectReference: {fileID: 522760517374921866}
+    - target: {fileID: 2378363903700307023, guid: 4a1213a5be3ccb8409a6fc74b9a7ba79,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2594183469874668600, guid: 4a1213a5be3ccb8409a6fc74b9a7ba79,
         type: 3}
       propertyPath: m_Name

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using RPG.Core;
+using RPG.Resources;
 
 namespace RPG.Combat
 {

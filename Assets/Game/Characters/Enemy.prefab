@@ -222,7 +222,12 @@ PrefabInstance:
     - target: {fileID: 5780824787940438028, guid: 3c747cdfecd2217449df39368d953f47,
         type: 3}
       propertyPath: characterClass
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780824787940438028, guid: 3c747cdfecd2217449df39368d953f47,
+        type: 3}
+      propertyPath: startingLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7625695249416595349, guid: 3c747cdfecd2217449df39368d953f47,
         type: 3}
