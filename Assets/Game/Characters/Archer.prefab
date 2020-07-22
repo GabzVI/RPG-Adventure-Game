@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2990995213041135905, guid: 3b059d0fcb8167c468130424261d9088,
+        type: 3}
+      propertyPath: regenHealthPercentage
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3296612244380042674, guid: 3b059d0fcb8167c468130424261d9088,
         type: 3}
       propertyPath: m_Name

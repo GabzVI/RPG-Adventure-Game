@@ -20,7 +20,7 @@ namespace RPG.Resources
 		// Update is called once per frame
 		void Update()
 		{
-			textPro.text = string.Format("{0:0}%", health.GetHealthPercentage());
+			textPro.text = string.Format("{0:0} / {1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
 		}
 	}
 }

@@ -22,9 +22,9 @@ namespace RPG.Combat
 		void Update()
 		{
 			if(fighter.GetTarget() == null) { textPro.text = "N/A"; return; }
-			Health health = fighter.GetTarget(); 
-			
-			textPro.text = string.Format("{0:0}%", health.GetHealthPercentage());
+			Health health = fighter.GetTarget();
+
+			textPro.text = string.Format("{0:0} / {1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
 			
 		
 		}

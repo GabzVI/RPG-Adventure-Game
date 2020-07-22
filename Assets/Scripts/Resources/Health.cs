@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Stats;
 using RPG.Core;
+using System;
 
 namespace RPG.Resources
 {
 	public class Health : MonoBehaviour
 	{
+		[SerializeField] float regenHealthPercentage = 80f;
 		public float healthPoints;
 
 		BaseStats basestats;
@@ -20,11 +22,16 @@ namespace RPG.Resources
 
 		private void Start()
 		{
-			healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);	
+			basestats = GetComponent<BaseStats>();
+			basestats.onLevelUp += RegenereteHealth;
+
+			healthPoints = basestats.GetStat(Stat.Health);	
 		}
-		 
+
 		public void TakeDamage(GameObject instigator, float damage)
 		{
+			print(gameObject + "took damage: " + damage);
+
 			//This will ensure that health doesnt go below 0
 			healthPoints = Mathf.Max(healthPoints - damage,0);
 			print("health = " + healthPoints + gameObject.name);
@@ -35,16 +42,21 @@ namespace RPG.Resources
 			}
 		}
 
-		public float GetHealthPercentage()
+		public float GetHealthPoints()
 		{
-			return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
+			return healthPoints;
+		}
+
+		public float GetMaxHealthPoints()
+		{
+			return basestats.GetStat(Stat.Health);
 		}
 
 		private void AwardExp(GameObject instigator)
 		{
 			Experience experience = instigator.GetComponent<Experience>();
 			if(experience == null) { return; }
-			experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+			experience.GainExperience(basestats.GetStat(Stat.ExperienceReward));
 		}
 
 		private void Die()
@@ -56,6 +68,11 @@ namespace RPG.Resources
 			GetComponent<ActionScheduler>().CancelCurrentAction();
 		}
 
+		private void RegenereteHealth()
+		{
+			print("Stat.Health = " + basestats.GetStat(Stat.Health));
+			healthPoints = Mathf.Max(healthPoints, basestats.GetStat(Stat.Health) * (regenHealthPercentage / 100));
+		}
 	}
 }
 

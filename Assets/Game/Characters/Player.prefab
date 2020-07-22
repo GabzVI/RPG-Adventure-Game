@@ -223,6 +223,12 @@ PrefabInstance:
       propertyPath: startingLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5780824787940438028, guid: 3c747cdfecd2217449df39368d953f47,
+        type: 3}
+      propertyPath: levelUpParticle
+      value: 
+      objectReference: {fileID: 4549996025624998977, guid: 6e5366e58de0ee744beea484b84a672d,
+        type: 3}
     - target: {fileID: 7625695249416595349, guid: 3c747cdfecd2217449df39368d953f47,
         type: 3}
       propertyPath: uniqueIdentifier
