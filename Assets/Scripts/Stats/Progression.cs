@@ -37,7 +37,7 @@ namespace RPG.Stats
 
 			if(levels.Length < level) { return 0; }
 
-			return levels[level - 1];
+			return levels[level -1];
 
 		}
 

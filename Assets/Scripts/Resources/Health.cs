@@ -8,7 +8,7 @@ namespace RPG.Resources
 {
 	public class Health : MonoBehaviour
 	{
-		[SerializeField] float healthPoints = 100f;
+		public float healthPoints;
 
 		BaseStats basestats;
 		bool isDead = false;
@@ -20,8 +20,9 @@ namespace RPG.Resources
 
 		private void Start()
 		{
-			healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+			healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);	
 		}
+		 
 		public void TakeDamage(GameObject instigator, float damage)
 		{
 			//This will ensure that health doesnt go below 0

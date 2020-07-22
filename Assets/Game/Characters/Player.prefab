@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a83d6a61bf54498d99cdd461b140f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6244568105306005686
+--- !u!114 &3616638383690483921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,6 +217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: characterClass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780824787940438028, guid: 3c747cdfecd2217449df39368d953f47,
+        type: 3}
+      propertyPath: startingLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7625695249416595349, guid: 3c747cdfecd2217449df39368d953f47,
         type: 3}
