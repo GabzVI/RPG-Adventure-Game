@@ -15,10 +15,15 @@ namespace RPG.Movement
 
 		NavMeshAgent navmeshAgent;
 		Health health;
-		private void Start()
+
+		private void Awake()
 		{
 			navmeshAgent = GetComponent<NavMeshAgent>();
 			health = GetComponent<Health>();
+		}
+		private void Start()
+		{
+			
 		}
 		// Update is called once per frame
 		void Update()

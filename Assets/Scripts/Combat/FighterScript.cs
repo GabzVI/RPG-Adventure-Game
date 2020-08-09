@@ -9,7 +9,7 @@ using System;
 
 namespace RPG.Combat
 {
-	public class FighterScript : MonoBehaviour, IAction
+	public class FighterScript : MonoBehaviour, IAction, IModifierProvider
 	{
 
 		[SerializeField] float timeBetweenAttacks = 1.0f;
@@ -27,7 +27,7 @@ namespace RPG.Combat
 		private void Awake()
 		{
 			animator = GetComponent<Animator>();
-
+			
 			if(currentWeapon == null)
 			{
 				EquipWeapon(defaultWeapon);
@@ -98,6 +98,7 @@ namespace RPG.Combat
 			if(target == null) { return; }
 
 			float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+			
 			if (currentWeapon.HasProjectile())
 			{
 				currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
@@ -132,18 +133,34 @@ namespace RPG.Combat
 			GetComponent<ActionScheduler>().StartAction(this);
 			target = combatTarget.GetComponent<Health>();
 		}
-	   
-		public void Cancel()
-		{
-			StopAttack();
-			target = null;
-			GetComponent<Mover>().Cancel();
-		}
 
 		private void StopAttack()
 		{
 			GetComponent<Animator>().ResetTrigger("Attack");
 			GetComponent<Animator>().SetTrigger("stopAttack");
+		}
+
+		public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+		{
+			if(stat == Stat.Damage)
+			{
+				yield return currentWeapon.GetWeaponDamage();
+			}
+		}
+
+		public IEnumerable<float> GetPercentageModifiers(Stat stat)
+		{
+			if(stat == Stat.Damage)
+			{
+				yield return currentWeapon.GetPercentageBonus();
+			}
+		}
+
+		public void Cancel()
+		{
+			StopAttack();
+			target = null;
+			GetComponent<Mover>().Cancel();
 		}
 	}
 }
