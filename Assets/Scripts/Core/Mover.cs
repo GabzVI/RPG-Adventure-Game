@@ -51,8 +51,6 @@ namespace RPG.Movement
 			navmeshAgent.isStopped = true;
 		}
 
-	 
-
 		private void UpdateAnimator()
 		{
 			Vector3 velocity = navmeshAgent.velocity;

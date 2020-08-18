@@ -26,10 +26,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.39594027
-  m_Height: 2.053514
+  m_Radius: 0.33272
+  m_Height: 2.0499997
   m_Direction: 1
-  m_Center: {x: 0, y: 0.99999976, z: 0.1037367}
+  m_Center: {x: 1.9445387e-10, y: 0.99999976, z: 0.046456695}
 --- !u!114 &1001517212195190387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   dwellTime: 3
-  patrolSpeedFraction: 0.2
+  patrolSpeedFraction: 0.3
 --- !u!1001 &47754869201691667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +144,10 @@ PrefabInstance:
         type: 3}
       propertyPath: healthPoints
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 435281030, guid: 3c747cdfecd2217449df39368d953f47, type: 3}
+      propertyPath: maxSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 435281031, guid: 3c747cdfecd2217449df39368d953f47, type: 3}
       propertyPath: m_Speed
@@ -260,6 +264,11 @@ PrefabInstance:
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 47754869201292799}
+    - target: {fileID: 8355522448820835622, guid: 3c747cdfecd2217449df39368d953f47,
+        type: 3}
+      propertyPath: chaseSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7139646309661634722, guid: 3c747cdfecd2217449df39368d953f47, type: 3}
     - {fileID: 7625695249416595349, guid: 3c747cdfecd2217449df39368d953f47, type: 3}

@@ -16,6 +16,7 @@ namespace RPG.Combat
 		[SerializeField] Transform rightHandTransform = null;
 		[SerializeField] Transform leftHandTransform = null;
 		[SerializeField] Weapon defaultWeapon = null;
+		[SerializeField] float chaseSpeed = 0f;
 
 		Health target;
 		Animator animator;
@@ -49,7 +50,7 @@ namespace RPG.Combat
 
 			if (!GetIsinRange())
 			{
-				GetComponent<Mover>().MoveTo(target.transform.position, 1f);
+				GetComponent<Mover>().MoveTo(target.transform.position, chaseSpeed);
 			}
 			else
 			{
