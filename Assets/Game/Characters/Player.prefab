@@ -58,6 +58,8 @@ MonoBehaviour:
   - type: 4
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  maxDistanceNavProjection: 1
+  maxPathLength: 35
 --- !u!114 &3616638383690483921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435281031, guid: 3c747cdfecd2217449df39368d953f47, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476428156606577237, guid: 3c747cdfecd2217449df39368d953f47,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3523535655988579027, guid: 3c747cdfecd2217449df39368d953f47,

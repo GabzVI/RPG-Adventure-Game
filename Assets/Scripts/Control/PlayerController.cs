@@ -27,6 +27,7 @@ namespace RPG.Control
 		//An array of different cursor mapping which will be used later on to pick the cursor we want.
 		[SerializeField] CursorMapping[] cursorMappings = null;
 		[SerializeField] float maxDistanceNavProjection = 1f;
+		[SerializeField] float maxPathLength = 35f;
 
 		private void Start()
 		{
@@ -136,7 +137,33 @@ namespace RPG.Control
 			if (!hasCastToNavMesh) { return false; }
 
 			target = navMeshHit.position;
+
+			//reference types can be null, so we need to give it a navmeshpath to ensure it isnt null.
+			NavMeshPath path = new NavMeshPath();
+			bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+			if (!hasPath) { return false; }
+
+			//Checks whether or not the path is complete, and returns false if not complete
+			if (path.status != NavMeshPathStatus.PathComplete) { return false; }
+			if(GetPathLengh(path) > maxPathLength) { return false; }
+
 			return true;
+		}
+
+		private float GetPathLengh(NavMeshPath path)
+		{
+			float total = 0;
+
+			if (path.corners.Length < 2) { return total; }
+
+			for (int i = 0; i < path.corners.Length - 1; i++)
+			{
+				//returns the distance between the first vector point in the corners and the next vector point of the corners.
+				total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+			}
+
+			return total;
+			
 		}
 
 		private void SetCursor(CursorType type)

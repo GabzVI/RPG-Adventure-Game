@@ -4,12 +4,23 @@ using UnityEngine;
 using RPG.Stats;
 using RPG.Core;
 using System;
+using UnityEngine.Events;
 
 namespace RPG.Resources
 {
 	public class Health : MonoBehaviour
 	{
 		[SerializeField] float regenHealthPercentage = 80f;
+		[SerializeField] TakeDamageEvent takeDamage;
+
+
+		//Inheriting from Unityevent and has float
+		[System.Serializable]
+		public class TakeDamageEvent : UnityEvent<float>
+		{
+
+		}
+
 		public float healthPoints;
 
 		BaseStats basestats;
@@ -24,8 +35,7 @@ namespace RPG.Resources
 		{
 			basestats = GetComponent<BaseStats>();
 			basestats.onLevelUp += RegenereteHealth;
-
-			healthPoints = basestats.GetStat(Stat.Health);	
+			healthPoints = basestats.GetStat(Stat.Health);
 		}
 
 		public void TakeDamage(GameObject instigator, float damage)
@@ -34,11 +44,16 @@ namespace RPG.Resources
 
 			//This will ensure that health doesnt go below 0
 			healthPoints = Mathf.Max(healthPoints - damage,0);
+			
+
 			print("health = " + healthPoints + gameObject.name);
 			if(healthPoints == 0)
 			{
 				Die();
 				AwardExp(instigator);
+			}
+			{
+				takeDamage.Invoke(damage);
 			}
 		}
 

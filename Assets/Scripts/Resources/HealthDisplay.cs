@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace RPG.Resources
 {
@@ -20,7 +21,7 @@ namespace RPG.Resources
 		// Update is called once per frame
 		void Update()
 		{
-			textPro.text = string.Format("{0:0} / {1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
+			textPro.text = String.Format("{0:0} / {1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
 		}
 	}
 }
