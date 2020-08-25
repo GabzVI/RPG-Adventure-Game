@@ -28,6 +28,7 @@ namespace RPG.Control
 		[SerializeField] CursorMapping[] cursorMappings = null;
 		[SerializeField] float maxDistanceNavProjection = 1f;
 		[SerializeField] float maxPathLength = 35f;
+		[SerializeField] float raycastRadius = 1f;
 
 		private void Start()
 		{
@@ -86,7 +87,7 @@ namespace RPG.Control
 
 		RaycastHit[] RaycastAllSorted()
 		{
-			RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+			RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
 
 			//contains the distances between player and character
 			float[] distances = new float[hits.Length];
@@ -189,6 +190,7 @@ namespace RPG.Control
 		{
 			return Camera.main.ScreenPointToRay(Input.mousePosition);
 		}
+
 	}
 }
 

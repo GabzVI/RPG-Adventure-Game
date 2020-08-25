@@ -5,6 +5,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Resources;
 using RPG.Stats;
+using RPG.Control;
 using System;
 
 namespace RPG.Combat
@@ -21,15 +22,19 @@ namespace RPG.Combat
 		Health target;
 		Animator animator;
 		Weapon currentWeapon = null;
-
+		GameObject player;
+		GameObject[] enemies;
+	
 		//Will enable characters to attack straight away.
 		float timeForLastAttack = Mathf.Infinity;
 
 		private void Awake()
 		{
 			animator = GetComponent<Animator>();
+			player = GameObject.Find("Player");
+			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			
-			if(currentWeapon == null)
+			if (currentWeapon == null)
 			{
 				EquipWeapon(defaultWeapon);
 			}
@@ -63,6 +68,7 @@ namespace RPG.Combat
 		{
 			currentWeapon = weapon;
 			weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+			setAttackSpeed();
 		}
 
 		private void AttackBehaviour()
@@ -77,11 +83,11 @@ namespace RPG.Combat
 				timeForLastAttack = 0f;
 
 			}
-
 		}
 
 		private void TriggetAttack()
 		{
+			
 			//This will reset the stopAttack trigger to false.
 			GetComponent<Animator>().ResetTrigger("stopAttack");
 			//This will trigger the Hit() event on animation to deal damage.
@@ -108,7 +114,21 @@ namespace RPG.Combat
 			{
 				target.TakeDamage(gameObject, damage);
 			}
-		  
+
+			
+			
+
+		}
+
+		private void setAttackSpeed()
+		{
+			player.GetComponent<Animator>().SetFloat("animSpeed", currentWeapon.GetWeaponAttackSpeed());
+			foreach (GameObject enemy in enemies)
+			{
+				print("enemy" + enemy);
+				
+				enemy.GetComponent<Animator>().SetFloat("animSpeed", 1.0f);
+			}
 		}
 
 		void Shoot()

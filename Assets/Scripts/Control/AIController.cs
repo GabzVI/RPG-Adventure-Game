@@ -17,6 +17,7 @@ namespace RPG.Control
 		[SerializeField] ControlPath patrolPath;
 		[SerializeField] float waypointTolerance = 1.0f;
 		[SerializeField] float dwellTime = 3.0f;
+		[SerializeField] float helpDistance = 8f;
 		[Range(0,1)]
 		[SerializeField] float patrolSpeedFraction = 0.2f;
 
@@ -126,6 +127,20 @@ namespace RPG.Control
 		{
 			timeSincePlayerSeen = 0.0f;
 			fighter.Attack(player);
+
+			AggrevateNearbyEnemies();
+		}
+
+		private void AggrevateNearbyEnemies()
+		{
+			RaycastHit[] hits = Physics.SphereCastAll(transform.position, helpDistance, Vector3.up, 0);
+
+			foreach(RaycastHit hit in hits)
+			{
+				AIController ai = hit.collider.GetComponent<AIController>();
+				if(ai == null) { continue; }
+				ai.Aggrevate();
+			}
 		}
 
 		private bool IsAggrevated()
@@ -139,7 +154,10 @@ namespace RPG.Control
 		{
 			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position, chaseDistance);
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawWireSphere(transform.position, helpDistance);
 		}
+
 	}
 }
 
