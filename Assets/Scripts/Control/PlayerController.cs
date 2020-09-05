@@ -33,6 +33,7 @@ namespace RPG.Control
 		private void Start()
 		{
 			health = GetComponent<Health>();
+			//Cursor.lockState = CursorLockMode.Confined;
 		}
 
 		// Update is called once per frame
@@ -104,8 +105,6 @@ namespace RPG.Control
 
 		private bool InteractWithMovement()
 		{
-			
-			
 			Vector3 target;
 			bool hasHit = RaycastNavMesh(out target);
 

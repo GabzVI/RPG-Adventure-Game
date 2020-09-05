@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Stats;
 using RPG.Core;
+using RPG.Movement;
 using System;
 using UnityEngine.Events;
 
@@ -12,7 +13,6 @@ namespace RPG.Resources
 	{
 		[SerializeField] float regenHealthPercentage = 80f;
 		[SerializeField] TakeDamageEvent takeDamage;
-
 
 		//Inheriting from Unityevent and has float
 		[System.Serializable]
@@ -76,9 +76,11 @@ namespace RPG.Resources
 
 		private void Die()
 		{
-			if (isDead) return;
+			if (isDead) { return; }
 
 			isDead = true;
+
+			Destroy(GetComponent<Rigidbody>());
 			GetComponent<Animator>().SetTrigger("die");
 			GetComponent<ActionScheduler>().CancelCurrentAction();
 		}

@@ -43,11 +43,6 @@ namespace RPG.Combat
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Alpha1))
-			{
-				
-			}
-	
 			timeForLastAttack += Time.deltaTime;
 
 			if (target == null) { return; }
@@ -57,7 +52,8 @@ namespace RPG.Combat
 			{
 				GetComponent<Mover>().MoveTo(target.transform.position, chaseSpeed);
 			}
-			else
+
+			if(GetIsinRange())
 			{
 				GetComponent<Mover>().Cancel();
 				AttackBehaviour();
@@ -114,10 +110,6 @@ namespace RPG.Combat
 			{
 				target.TakeDamage(gameObject, damage);
 			}
-
-			
-			
-
 		}
 
 		private void setAttackSpeed()
@@ -125,8 +117,6 @@ namespace RPG.Combat
 			player.GetComponent<Animator>().SetFloat("animSpeed", currentWeapon.GetWeaponAttackSpeed());
 			foreach (GameObject enemy in enemies)
 			{
-				print("enemy" + enemy);
-				
 				enemy.GetComponent<Animator>().SetFloat("animSpeed", 1.0f);
 			}
 		}

@@ -37,6 +37,7 @@ namespace RPG.Movement
 		{
 			GetComponent<ActionScheduler>().StartAction(this);
 			MoveTo(destination, speedFraction);
+			navmeshAgent.isStopped = false;
 		}
 
 		public void MoveTo(Vector3 destination, float speedFraction)
@@ -49,6 +50,7 @@ namespace RPG.Movement
 		public void Cancel()
 		{
 			navmeshAgent.isStopped = true;
+			GetComponent<Rigidbody>().freezeRotation = true;
 		}
 
 		private void UpdateAnimator()
@@ -62,6 +64,10 @@ namespace RPG.Movement
 			GetComponent<Animator>().SetFloat("forwardSpeed", speed);
 		}
 
+		public void DisableNavMesh()
+		{
+			navmeshAgent.enabled = false;
+		}
 	}
 }
 
