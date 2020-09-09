@@ -52,12 +52,12 @@ namespace RPG.Combat
 			{
 				GetComponent<Mover>().MoveTo(target.transform.position, chaseSpeed);
 			}
-
-			if(GetIsinRange())
+			else 
 			{
 				GetComponent<Mover>().Cancel();
 				AttackBehaviour();
 			}
+			
 		}
 
 		public void EquipWeapon(Weapon weapon)
@@ -69,7 +69,6 @@ namespace RPG.Combat
 
 		private void AttackBehaviour()
 		{
-			
 			if (timeForLastAttack > timeBetweenAttacks)
 			{
 				//This will rotate the character towards the enemy that it will hit.
@@ -83,7 +82,6 @@ namespace RPG.Combat
 
 		private void TriggetAttack()
 		{
-			
 			//This will reset the stopAttack trigger to false.
 			GetComponent<Animator>().ResetTrigger("stopAttack");
 			//This will trigger the Hit() event on animation to deal damage.

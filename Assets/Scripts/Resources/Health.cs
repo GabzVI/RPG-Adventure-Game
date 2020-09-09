@@ -40,18 +40,17 @@ namespace RPG.Resources
 
 		public void TakeDamage(GameObject instigator, float damage)
 		{
-			print(gameObject + "took damage: " + damage);
 
 			//This will ensure that health doesnt go below 0
 			healthPoints = Mathf.Max(healthPoints - damage,0);
 			
 
-			print("health = " + healthPoints + gameObject.name);
 			if(healthPoints == 0)
 			{
 				Die();
 				AwardExp(instigator);
 			}
+			else
 			{
 				takeDamage.Invoke(damage);
 			}
@@ -79,8 +78,6 @@ namespace RPG.Resources
 			if (isDead) { return; }
 
 			isDead = true;
-
-			Destroy(GetComponent<Rigidbody>());
 			GetComponent<Animator>().SetTrigger("die");
 			GetComponent<ActionScheduler>().CancelCurrentAction();
 		}

@@ -53,13 +53,18 @@ namespace RPG.Combat
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.GetComponent<Health>() != target) { return; }
 
-			if (target.IsDead()) { return; }
-			
-			target.TakeDamage(instigator, damage);
+			Health targetHasHealth = other.GetComponent<Health>();
+
 			projectileSpeed = 0.0f;
 
+			if (targetHasHealth == null) { Destroy(gameObject); }
+
+			if(targetHasHealth != null && !targetHasHealth.IsDead())
+			{
+				targetHasHealth.TakeDamage(instigator, damage);
+			}
+			
 			if(hitEffect != null)
 			{
 				Instantiate(hitEffect, GetAimPosition(), transform.rotation);

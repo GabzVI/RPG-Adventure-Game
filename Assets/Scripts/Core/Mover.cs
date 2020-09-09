@@ -48,9 +48,8 @@ namespace RPG.Movement
 		}
 
 		public void Cancel()
-		{
+		{ 
 			navmeshAgent.isStopped = true;
-			GetComponent<Rigidbody>().freezeRotation = true;
 		}
 
 		private void UpdateAnimator()
@@ -62,11 +61,6 @@ namespace RPG.Movement
 			//Belowe we set a float which will be used by the animator to determine which animation to trigger by getting the local velocity in the z-axis that the object is moving in.
 			float speed = localVelocity.z;
 			GetComponent<Animator>().SetFloat("forwardSpeed", speed);
-		}
-
-		public void DisableNavMesh()
-		{
-			navmeshAgent.enabled = false;
 		}
 	}
 }
