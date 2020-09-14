@@ -11,7 +11,7 @@ namespace RPG.Combat
 		[SerializeField] float projectileSpeed = 1f;
 		[SerializeField] bool IsHoming = true;
 		[SerializeField] GameObject hitEffect = null;
-		[SerializeField] float maxLifeTime = 5f;
+		[SerializeField] float maxLifeTime = 1.5f;
 		[SerializeField] GameObject[] destroyOnHit = null;
 		[SerializeField] float lifeAfterImpact = 0.2f;
 

@@ -9,36 +9,37 @@ public class SliderValue : MonoBehaviour
 {
 	[SerializeField] Slider slider;
 	[SerializeField] CanvasGroup canvasGroup;
-	GameObject[] enemies;
+	[SerializeField] Health health;
+	[SerializeField] Canvas rootCanvas;
 	GameObject player;
-	FighterScript fighter;
-
 
 	private void Awake()
 	{
-		enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		fighter = GameObject.FindWithTag("Player").GetComponent<FighterScript>();
-		player = GameObject.Find("Player");
 		slider.minValue = 0f;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{ 
-		if(fighter.GetTarget() == null) { return; }
-		Health health = fighter.GetTarget();
-		
-		slider.maxValue = (health.GetMaxHealthPoints() / health.GetMaxHealthPoints());
+		slider.value = health.GetHealthPercentage();
 
-		slider.value = (health.GetHealthPoints() / health.GetMaxHealthPoints());
+		if (slider.value == 1)
+		{
+			rootCanvas.enabled = false;
+		}
+		else
+		{
+			rootCanvas.enabled = true;
+		}
 
 		if (slider.value == 0)
 		{
 			canvasGroup.alpha = 0;
+			rootCanvas.enabled = false;
+			return;
 		}
-		if (fighter.GetTarget().IsDead())
-		{
-			slider.maxValue = 1;
-		}
+		
+		//rootCanvas.enabled = true;
+		
 	}
 }
