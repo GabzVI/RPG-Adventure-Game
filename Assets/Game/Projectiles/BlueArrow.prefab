@@ -79,8 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 18
   IsHoming: 0
-  hitEffect: {fileID: 5779709428005635018, guid: 7414f5e2b0916414d82037c46639e831,
-    type: 3}
+  hitEffect: {fileID: 194062, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
   maxLifeTime: 5
   destroyOnHit:
   - {fileID: 2575484881902928838}

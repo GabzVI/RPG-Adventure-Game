@@ -15,7 +15,7 @@ MonoBehaviour:
   animOverride: {fileID: 22100000, guid: 3d25f0818b9ae4e45a2bb404d8fe7a79, type: 2}
   equippedPrefab: {fileID: 6180088244316199239, guid: 36947276b1a61df468105a2ed045a4bb,
     type: 3}
-  weaponDamage: 2
+  weaponDamage: 1
   WeaponAttackSpeed: 1
   percentageBonus: 0
   weaponRange: 2

@@ -21,7 +21,8 @@ namespace RPG.Resources
 
 		}
 
-		public float healthPoints;
+	    float healthPoints;
+		float MaxHealthPoints;
 
 		BaseStats basestats;
 		bool isDead = false;
@@ -31,7 +32,7 @@ namespace RPG.Resources
 			return isDead;
 		}
 
-		private void Start()
+		private void Awake()
 		{
 			basestats = GetComponent<BaseStats>();
 			basestats.onLevelUp += RegenereteHealth;
@@ -43,8 +44,6 @@ namespace RPG.Resources
 
 			//This will ensure that health doesnt go below 0
 			healthPoints = Mathf.Max(healthPoints - damage,0);
-			
-
 			if(healthPoints == 0)
 			{
 				Die();
@@ -62,7 +61,7 @@ namespace RPG.Resources
 		}
 
 		public float GetMaxHealthPoints()
-		{
+		{	
 			return basestats.GetStat(Stat.Health);
 		}
 

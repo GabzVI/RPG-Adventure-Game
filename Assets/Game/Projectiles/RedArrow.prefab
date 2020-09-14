@@ -266,8 +266,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9126922466967544932}
-  - component: {fileID: 3395081981963650825}
   - component: {fileID: 67012417624232391}
+  - component: {fileID: 3395081981963650825}
   m_Layer: 0
   m_Name: RedArrow
   m_TagString: Untagged
@@ -290,19 +290,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3395081981963650825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8875848919610365229}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12044079, y: 0.13888717, z: 0.65910804}
-  m_Center: {x: 0.0070967637, y: -0.0052962303, z: 0.17044598}
 --- !u!114 &67012417624232391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,9 +304,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   IsHoming: 0
-  hitEffect: {fileID: 5779709428005635018, guid: 7414f5e2b0916414d82037c46639e831,
-    type: 3}
+  hitEffect: {fileID: 194062, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
   maxLifeTime: 5
   destroyOnHit:
   - {fileID: 1121458685386311454}
   lifeAfterImpact: 0.2
+--- !u!65 &3395081981963650825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8875848919610365229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12044079, y: 0.13888717, z: 0.65910804}
+  m_Center: {x: 0.0070967637, y: -0.0052962303, z: 0.17044598}

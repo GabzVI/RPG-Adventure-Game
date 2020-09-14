@@ -10,8 +10,8 @@ namespace RPG.Movement
 	public class Mover : MonoBehaviour, IAction
 	{
 
-		[SerializeField] Transform target;
 		[SerializeField] float maxSpeed = 6.0f;
+		[SerializeField] float maxPathLength = 35f;
 
 		NavMeshAgent navmeshAgent;
 		Health health;
@@ -23,16 +23,30 @@ namespace RPG.Movement
 		}
 		private void Start()
 		{
-			
+
 		}
 		// Update is called once per frame
 		void Update()
 		{
 			navmeshAgent.enabled = !health.IsDead();
-			
+
 			UpdateAnimator();
 		}
 
+		public bool CanMoveTo(Vector3 destination)
+		{
+			//reference types can be null, so we need to give it a navmeshpath to ensure it isnt null.
+			NavMeshPath path = new NavMeshPath();
+			bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+			if (!hasPath) { return false; }
+			//Checks whether or not the path is complete, and returns false if not complete
+			if (path.status != NavMeshPathStatus.PathComplete) { return false; }
+			if (GetPathLengh(path) > maxPathLength) { return false; }
+
+			return true;
+		}
+
+		
 		public void StartMoving(Vector3 destination, float speedFraction)
 		{
 			GetComponent<ActionScheduler>().StartAction(this);
@@ -48,10 +62,24 @@ namespace RPG.Movement
 		}
 
 		public void Cancel()
-		{ 
+		{
 			navmeshAgent.isStopped = true;
 		}
 
+		private float GetPathLengh(NavMeshPath path)
+		{
+			float total = 0;
+
+			if (path.corners.Length < 2) { return total; }
+
+			for (int i = 0; i < path.corners.Length - 1; i++)
+			{
+				//returns the distance between the first vector point in the corners and the next vector point of the corners.
+				total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+			}
+
+			return total;
+		}
 		private void UpdateAnimator()
 		{
 			Vector3 velocity = navmeshAgent.velocity;
@@ -62,6 +90,8 @@ namespace RPG.Movement
 			float speed = localVelocity.z;
 			GetComponent<Animator>().SetFloat("forwardSpeed", speed);
 		}
+
+		
 	}
 }
 

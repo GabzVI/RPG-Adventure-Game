@@ -33,7 +33,7 @@ namespace RPG.Combat
 				transform.LookAt(GetAimPosition());
 			}
 
-			transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+			gameObject.transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
 		}
 		public void SetTarget(Health target, GameObject instigator, float damage)
 		{
@@ -41,7 +41,6 @@ namespace RPG.Combat
 			this.damage = damage;
 			this.instigator = instigator;
 
-			Destroy(gameObject, maxLifeTime);
 		}
 
 		private Vector3 GetAimPosition()
@@ -53,28 +52,26 @@ namespace RPG.Combat
 
 		private void OnTriggerEnter(Collider other)
 		{
+			if(other.GetComponent<Health>() != target) { return; }
 
-			Health targetHasHealth = other.GetComponent<Health>();
-
-			projectileSpeed = 0.0f;
-
-			if (targetHasHealth == null) { Destroy(gameObject); }
-
-			if(targetHasHealth != null && !targetHasHealth.IsDead())
+			if (hitEffect != null)
 			{
-				targetHasHealth.TakeDamage(instigator, damage);
+				Instantiate(hitEffect, GetAimPosition(), other.transform.rotation);
 			}
-			
-			if(hitEffect != null)
+
+			if (other.GetComponent<Health>() == target && !other.GetComponent<Health>().IsDead())
 			{
-				Instantiate(hitEffect, GetAimPosition(), transform.rotation);
+				projectileSpeed = 0.0f;
+				target.TakeDamage(instigator, damage);
 			}
 
 			foreach (GameObject toDestroy in destroyOnHit)
 			{
-				Destroy(toDestroy);
+				Destroy(toDestroy, lifeAfterImpact);
 			}
-			Destroy(gameObject, lifeAfterImpact);
+
+			Destroy(gameObject, maxLifeTime);
+
 		}
 	}
 }

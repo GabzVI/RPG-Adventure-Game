@@ -18,6 +18,7 @@ namespace RPG.Stats
 		private float XPToLevelUp = 0;
 		int currentLevel = 0;
 		Experience experience;
+		public bool hasLeveledUp = false;
 
 		private void Awake()
 		{
@@ -55,6 +56,11 @@ namespace RPG.Stats
 				currentLevel = newLevel;
 				LevelUpEffect();
 				onLevelUp();
+				hasLeveledUp = true;
+			}
+			else
+			{
+				hasLeveledUp = false;
 			}
 		}
 

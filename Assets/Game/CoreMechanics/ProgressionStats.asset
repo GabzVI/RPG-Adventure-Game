@@ -119,7 +119,7 @@ MonoBehaviour:
       - 560
     - stat: 3
       levels:
-      - 3
+      - 2
       - 10
       - 11
       - 13

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - DamageText
+  - Raycastable
   layers:
   - Default
   - TransparentFX
