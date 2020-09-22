@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Control;
+using RPG.Movement;
 
 namespace RPG.Combat
 {
@@ -10,7 +11,8 @@ namespace RPG.Combat
 	{
 		[SerializeField] Weapon weapon = null;
 		[SerializeField] float respawnTime = 5f;
-
+		[SerializeField] float chaseSpeed = 0f;
+	
 		private void OnTriggerEnter(Collider other)
 		{
 			if (other.gameObject.tag == "Player")
@@ -45,8 +47,8 @@ namespace RPG.Combat
 		{
 			if (Input.GetMouseButtonDown(1))
 			{
-				//Checks if the character has a fighterscript.
-				PickUp(callingController.GetComponent<FighterScript>());
+				GameObject player = GameObject.FindWithTag("Player");
+				player.GetComponent<Mover>().MoveTo(gameObject.transform.position, chaseSpeed);
 			}
 			return true;
 		}

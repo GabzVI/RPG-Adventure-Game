@@ -8,7 +8,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Resources;
 using UnityEngine.AI;
-
+using UnityEngine.Events;
 
 namespace RPG.Control
 {
@@ -116,6 +116,7 @@ namespace RPG.Control
 				if (Input.GetMouseButton(1))
 				{
 					//1f is to ensure player moves at full speed
+					
 					GetComponent<Mover>().StartMoving(target, 1f);
 				}
 				SetCursor(CursorType.Movement);

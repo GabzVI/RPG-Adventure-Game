@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8355522448820835622}
   - component: {fileID: 223918462}
   - component: {fileID: -5294457716028225752}
+  - component: {fileID: 9105491922909789198}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -131,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4692511efcd1d4e9cd2f6367d41c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   maxSpeed: 6
+  maxPathLength: 35
 --- !u!114 &5780824787940438028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,9 @@ MonoBehaviour:
   progression: {fileID: 11400000, guid: 552c7cf05f6c02b4ba3edb4c52a3b2d7, type: 2}
   levelUpParticle: {fileID: 0}
   shouldUseModifiers: 0
+  lvlUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8355522448820835622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +210,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  healthPoints: 100
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &9105491922909789198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655660452178031547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f932597de205b41b3cfa1d3d35d73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5731587000406823740
 PrefabInstance:
   m_ObjectHideFlags: 0

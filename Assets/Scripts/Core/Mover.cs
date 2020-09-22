@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using RPG.Core;
 using RPG.Resources;
 
+
 namespace RPG.Movement
 {
 	public class Mover : MonoBehaviour, IAction
@@ -12,19 +13,19 @@ namespace RPG.Movement
 
 		[SerializeField] float maxSpeed = 6.0f;
 		[SerializeField] float maxPathLength = 35f;
+		
+
 
 		NavMeshAgent navmeshAgent;
 		Health health;
+		
 
 		private void Awake()
 		{
 			navmeshAgent = GetComponent<NavMeshAgent>();
 			health = GetComponent<Health>();
 		}
-		private void Start()
-		{
-
-		}
+	
 		// Update is called once per frame
 		void Update()
 		{
@@ -56,9 +57,10 @@ namespace RPG.Movement
 
 		public void MoveTo(Vector3 destination, float speedFraction)
 		{
-		    navmeshAgent.destination = destination;
+			navmeshAgent.destination = destination;
 		    navmeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-		    navmeshAgent.isStopped = false;
+			navmeshAgent.isStopped = false;
+
 		}
 
 		public void Cancel()
@@ -89,6 +91,7 @@ namespace RPG.Movement
 			//Belowe we set a float which will be used by the animator to determine which animation to trigger by getting the local velocity in the z-axis that the object is moving in.
 			float speed = localVelocity.z;
 			GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+
 		}
 
 		

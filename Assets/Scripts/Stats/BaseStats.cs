@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using GameDevTV.Utils;
+using UnityEngine.Events;
 
 namespace RPG.Stats
 {
@@ -14,6 +15,7 @@ namespace RPG.Stats
 		[SerializeField] Progression progression = null;
 		[SerializeField] GameObject levelUpParticle = null;
 		[SerializeField] bool shouldUseModifiers = false;
+		[SerializeField] UnityEvent lvlUp;
 
 		public event Action onLevelUp;
 		private float XPToLevelUp = 0;
@@ -48,7 +50,6 @@ namespace RPG.Stats
 				experience.onExperienceGained -= UpdateLevel;
 			}
 		}
-
 		private void UpdateLevel()
 		{
 			int newLevel = CalculateLevel();
@@ -56,6 +57,7 @@ namespace RPG.Stats
 			{
 				currentLevel.value = newLevel;
 				LevelUpEffect();
+				lvlUp.Invoke();
 				onLevelUp();
 			}
 		}

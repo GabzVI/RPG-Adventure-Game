@@ -44,6 +44,7 @@ namespace RPG.Combat
 		}
 		private Weapon SetUpDefaultWeapon()
 		{
+			EquipWeapon(defaultWeapon);
 			return defaultWeapon;
 		}
 		private void Update()
@@ -73,8 +74,9 @@ namespace RPG.Combat
 
 		private void AttachWeapon(Weapon weapon)
 		{
-			weapon.Spawn(rightHandTransform, leftHandTransform, animator);
 			setAttackSpeed();
+			weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+			
 		}
 
 		private void AttackBehaviour()
@@ -82,7 +84,7 @@ namespace RPG.Combat
 			if (timeForLastAttack > timeBetweenAttacks)
 			{
 				//This will rotate the character towards the enemy that it will hit.
-				transform.LookAt(target.transform);
+				transform.LookAt(target.transform.position);
 
 				TriggetAttack();
 				timeForLastAttack = 0f;

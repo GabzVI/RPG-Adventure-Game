@@ -23,8 +23,9 @@ namespace RPG.Resources
 
 		}
 
-	    LazyValue<float> healthPoints;
-		float MaxHealthPoints;
+		LazyValue<float> healthPoints;
+		
+		Health target;
 
 		bool isDead = false;
 
@@ -46,6 +47,14 @@ namespace RPG.Resources
 			healthPoints.ForceInit();
 		}
 
+		private void Update()
+		{
+			if (healthPoints.value > GetMaxHealthPoints())
+			{
+				healthPoints.value = GetMaxHealthPoints();
+			}
+		}
+
 		private float GetInitialHealth()
 		{
 			return GetComponent<BaseStats>().GetStat(Stat.Health);
@@ -56,10 +65,11 @@ namespace RPG.Resources
 		{
 
 			//This will ensure that health doesnt go below 0
-			healthPoints.value = Mathf.Max(healthPoints.value - damage,0);
-			if(healthPoints.value == 0)
+			healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+			if (healthPoints.value == 0)
 			{
 				onDie.Invoke();
+				GetComponent<DropHealthPickUp>().SpawnHealthPickUp();
 				Die();
 				AwardExp(instigator);
 			}
@@ -75,19 +85,19 @@ namespace RPG.Resources
 		}
 
 		public float GetMaxHealthPoints()
-		{	
+		{
 			return GetComponent<BaseStats>().GetStat(Stat.Health);
 		}
 
 		public float GetHealthPercentage()
 		{
-			return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health); 
+			return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
 		}
 
 		private void AwardExp(GameObject instigator)
 		{
 			Experience experience = instigator.GetComponent<Experience>();
-			if(experience == null) { return; }
+			if (experience == null) { return; }
 			experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
 		}
 
@@ -96,13 +106,20 @@ namespace RPG.Resources
 			if (isDead) { return; }
 
 			isDead = true;
+
 			GetComponent<Animator>().SetTrigger("die");
 			GetComponent<ActionScheduler>().CancelCurrentAction();
+			
 		}
 
 		private void RegenereteHealth()
 		{
-			healthPoints.value = Mathf.Max(healthPoints.value, GetComponent<BaseStats>().GetStat(Stat.Health) * (regenHealthPercentage / 100));
+			healthPoints.value = Mathf.Max(healthPoints.value, GetMaxHealthPoints() * (regenHealthPercentage / 100));
+		}
+
+		public void PickUpRegen(float pickUpRegenPercentage)
+		{
+			healthPoints.value += ((pickUpRegenPercentage / GetMaxHealthPoints()) * 100);
 		}
 	}
 }

@@ -27,11 +27,6 @@ namespace RPG.Core
             StartAction(null);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 

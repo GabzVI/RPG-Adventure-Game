@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
 using RPG.Resources;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -14,6 +15,7 @@ namespace RPG.Combat
 		[SerializeField] float maxLifeTime = 1.5f;
 		[SerializeField] GameObject[] destroyOnHit = null;
 		[SerializeField] float lifeAfterImpact = 0.2f;
+		[SerializeField] UnityEvent onHit;
 
 		Health target = null;
 		GameObject instigator = null;
@@ -49,28 +51,27 @@ namespace RPG.Combat
 			if (targetCapsule == null) { return target.transform.position; }
 			return target.transform.position + Vector3.up * (targetCapsule.height / 2.0f);
 		}
-
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.GetComponent<Health>() != target) { return; }
+			if(other.tag == "Building") { Destroy(gameObject); return; }
+			if (other.GetComponent<Health>() != target) { return; }
+			if (target.IsDead()) { return; }
+			target.TakeDamage(instigator, damage);
+			projectileSpeed = 0.0f;
 
+			onHit.Invoke();
 			if (hitEffect != null)
 			{
 				Instantiate(hitEffect, GetAimPosition(), other.transform.rotation);
 			}
 
-			if (other.GetComponent<Health>() == target && !other.GetComponent<Health>().IsDead())
-			{
-				projectileSpeed = 0.0f;
-				target.TakeDamage(instigator, damage);
-			}
 
 			foreach (GameObject toDestroy in destroyOnHit)
 			{
-				Destroy(toDestroy, lifeAfterImpact);
+				Destroy(toDestroy);
 			}
 
-			Destroy(gameObject, maxLifeTime);
+			Destroy(gameObject, lifeAfterImpact);
 
 		}
 	}

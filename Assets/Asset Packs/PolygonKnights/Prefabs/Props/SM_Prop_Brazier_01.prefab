@@ -16,8 +16,8 @@ GameObject:
   m_Name: SM_Prop_Brazier_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &482004
 Transform:
@@ -109,8 +109,8 @@ GameObject:
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6975423949261208306
 Transform:
@@ -137,7 +137,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9056604, g: 0.7092894, b: 0.13243146, a: 1}
+  m_Color: {r: 1, g: 0.73333335, b: 0.4509804, a: 1}
   m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
