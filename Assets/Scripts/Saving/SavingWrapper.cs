@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RPG.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,11 @@ namespace RPG.Saving
 
 		const string defaultSaveFile = "save";
 
-		private void Start()
+		private IEnumerator Start()
 		{
-			Load();
+			Fader fader = FindObjectOfType<Fader>();
+
+			yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
 		}
 
 		// Update is called once per frame

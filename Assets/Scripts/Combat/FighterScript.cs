@@ -8,10 +8,11 @@ using RPG.Stats;
 using RPG.Control;
 using System;
 using GameDevTV.Utils;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
-	public class FighterScript : MonoBehaviour, IAction, IModifierProvider
+	public class FighterScript : MonoBehaviour, IAction, IModifierProvider, ISaveable
 	{
 
 		[SerializeField] float timeBetweenAttacks = 1.0f;
@@ -182,6 +183,16 @@ namespace RPG.Combat
 			StopAttack();
 			target = null;
 			GetComponent<Mover>().Cancel();
+		}
+
+		public object CaptureState()
+		{
+			return null;
+		}
+
+		public void RestoreState(object state)
+		{
+
 		}
 	}
 }

@@ -7,10 +7,10 @@ using RPG.Movement;
 using System;
 using UnityEngine.Events;
 using GameDevTV.Utils;
-
+using RPG.Saving;
 namespace RPG.Resources
 {
-	public class Health : MonoBehaviour
+	public class Health : MonoBehaviour, ISaveable
 	{
 		[SerializeField] float regenHealthPercentage = 80f;
 		[SerializeField] TakeDamageEvent takeDamage;
@@ -120,6 +120,20 @@ namespace RPG.Resources
 		public void PickUpRegen(float pickUpRegenPercentage)
 		{
 			healthPoints.value += ((pickUpRegenPercentage / GetMaxHealthPoints()) * 100);
+		}
+
+		public object CaptureState()
+		{
+			return healthPoints.value;
+		}
+
+		public void RestoreState(object state)
+		{
+			healthPoints.value = (float)state;
+			if(healthPoints.value <= 0)
+			{
+				Die();
+			}
 		}
 	}
 }

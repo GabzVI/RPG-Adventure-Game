@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2304634}
   - component: {fileID: 64079651803024754}
   - component: {fileID: 64265361949996904}
+  - component: {fileID: 3018824652741827783}
   m_Layer: 0
   m_Name: SM_Bld_House_Room_01
   m_TagString: Building
@@ -109,3 +110,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43228631120798786, guid: 693889836f3df094ebca7dcd88acfd3b, type: 2}
+--- !u!54 &3018824652741827783
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171434}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
