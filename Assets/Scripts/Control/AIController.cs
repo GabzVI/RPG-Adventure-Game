@@ -12,7 +12,7 @@ namespace RPG.Control
 {
 	public class AIController : MonoBehaviour
 	{
-		[SerializeField] float chaseDistance = 5.0f;
+		[SerializeField] float chaseDistance = 8f;
 		[SerializeField] float suspicionTime = 3.0f;
 		[SerializeField] float aggroCD = 5.0f;
 		[SerializeField] ControlPath patrolPath;
@@ -59,11 +59,11 @@ namespace RPG.Control
 		{ 
 			if (health.IsDead()) { return; }
 
-			if (IsAggrevated() && fighter.CanAttack(player))
+			if (IsAggrevated() && fighter.CanAttack(player) && !ToFartoChase())
 			{
 				AttackBehaviour();
 			}
-			else if (timeSincePlayerSeen < suspicionTime)
+			else if (timeSincePlayerSeen < suspicionTime )
 			{
 				//Suspicion State
 				SuspiciousBehaviour();
@@ -154,6 +154,13 @@ namespace RPG.Control
 		{
 			float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 			return distanceToPlayer < chaseDistance || timeSinceAggrevated < aggroCD;
+		}
+
+		private bool ToFartoChase()
+		{
+			float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+			if (distanceToPlayer >= chaseDistance) { return true; } else { return false; }
+			
 		}
 
 		//Called by Unity

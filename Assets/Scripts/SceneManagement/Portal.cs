@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using RPG.Saving;
+using RPG.Control;
 
 namespace RPG.SceneManagement
 {
@@ -22,8 +23,6 @@ namespace RPG.SceneManagement
 		[SerializeField] float FadeInTimer = 1f;
 		[SerializeField] float FadeOutTimer = 2f;
 		[SerializeField] float FadeWaitTimer = 0.5f;
-
-
 
 		private void OnTriggerEnter(Collider other)
 		{
@@ -45,14 +44,18 @@ namespace RPG.SceneManagement
 
 			//This will be used to not delete the portal after the user has gone to the other scene as coroutine deletes it automatically.
 			DontDestroyOnLoad(gameObject);
-
 			Fader fader = FindObjectOfType<Fader>();
 			SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+			PlayerController playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+			playerControl.enabled = false;
+
 			yield return fader.FadeOut(FadeOutTimer);
 
 			savingWrapper.Save();
 
 			yield return SceneManager.LoadSceneAsync(sceneToLoad);
+			PlayerController newplayerControl = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+			newplayerControl.enabled = false;
 
 			savingWrapper.Load();
 
@@ -62,8 +65,9 @@ namespace RPG.SceneManagement
 			savingWrapper.Save();
 
 			yield return new WaitForSeconds(FadeWaitTimer);
-			yield return fader.FadeIn(FadeInTimer);
-			
+			fader.FadeIn(FadeInTimer);
+
+			newplayerControl.enabled = true;
 			Destroy(gameObject);
 		}
 

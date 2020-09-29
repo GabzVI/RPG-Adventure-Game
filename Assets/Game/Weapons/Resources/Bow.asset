@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   animOverride: {fileID: 22100000, guid: 289a67310a627fb4eb95d34e50f4dd3f, type: 2}
-  equippedPrefab: {fileID: 4755359250760678471, guid: be295f66a1b0de6408eef34f649935d3,
+  equippedPrefab: {fileID: 2111449649260295113, guid: be295f66a1b0de6408eef34f649935d3,
     type: 3}
   weaponDamage: 3
   WeaponAttackSpeed: 3

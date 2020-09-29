@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4fbe960b2db4ad44a45caf1db6ee398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 5
+  chaseDistance: 8
   suspicionTime: 5
   aggroCD: 1
   patrolPath: {fileID: 0}
