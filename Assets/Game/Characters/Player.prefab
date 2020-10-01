@@ -170,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc56a548320666a4b9e5bf35569b8583, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -824,6 +824,105 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   maxDistanceNavProjection: 1
   raycastRadius: 1
+--- !u!1001 &644021150417158976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5723096833765685823}
+    m_Modifications:
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890252319938633, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167882873339503483, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: m_Name
+      value: SnowingParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479197966118178116, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b1af8e95cbf3b0449b1effb86d1f4fd, type: 3}
 --- !u!1001 &8723279357435125819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -880,6 +979,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185463569305245116, guid: 107f8c188bc9c844b8b4ac5e8367f765,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185463569305245116, guid: 107f8c188bc9c844b8b4ac5e8367f765,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5846544251440576153, guid: 107f8c188bc9c844b8b4ac5e8367f765,
         type: 3}
@@ -1149,6 +1258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fairy Dust Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454377673268059348, guid: 831654dbd3bbdff45a087fa79b7c2506,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2457768577186542868, guid: 831654dbd3bbdff45a087fa79b7c2506,
         type: 3}
@@ -1463,6 +1577,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c747cdfecd2217449df39368d953f47, type: 3}
+--- !u!4 &5723096833765685823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3523535655988579027, guid: 3c747cdfecd2217449df39368d953f47,
+    type: 3}
+  m_PrefabInstance: {fileID: 9190328679242887404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5263817359618258884 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -5294457716028225752, guid: 3c747cdfecd2217449df39368d953f47,
@@ -1475,12 +1595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfb3824b57eecb41bd7397bda23ccbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5723096833765685823 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3523535655988579027, guid: 3c747cdfecd2217449df39368d953f47,
-    type: 3}
-  m_PrefabInstance: {fileID: 9190328679242887404}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5562254424335221591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3655660452178031547, guid: 3c747cdfecd2217449df39368d953f47,

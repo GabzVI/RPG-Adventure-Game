@@ -13,7 +13,9 @@ namespace RPG.Resources
 	public class Health : MonoBehaviour, ISaveable
 	{
 		[SerializeField] float regenHealthPercentage = 80f;
+		[SerializeField] float unitHP = 0f;
 		[SerializeField] TakeDamageEvent takeDamage;
+		
 		[SerializeField] UnityEvent onDie;
 
 		//Inheriting from Unityevent and has float
@@ -25,6 +27,8 @@ namespace RPG.Resources
 
 		LazyValue<float> healthPoints;
 		
+
+
 		Health target;
 
 		bool isDead = false;
@@ -52,7 +56,9 @@ namespace RPG.Resources
 			if (healthPoints.value > GetMaxHealthPoints())
 			{
 				healthPoints.value = GetMaxHealthPoints();
+				
 			}
+			unitHP = healthPoints.value;
 		}
 
 		private float GetInitialHealth()
@@ -69,7 +75,10 @@ namespace RPG.Resources
 			if (healthPoints.value == 0)
 			{
 				onDie.Invoke();
-				GetComponent<DropHealthPickUp>().SpawnHealthPickUp();
+				if(gameObject.tag == "Enemy")
+				{
+					GetComponent<DropHealthPickUp>().SpawnHealthPickUp();
+				}
 				Die();
 				AwardExp(instigator);
 			}

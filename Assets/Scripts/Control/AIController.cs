@@ -59,7 +59,7 @@ namespace RPG.Control
 		{ 
 			if (health.IsDead()) { return; }
 
-			if (IsAggrevated() && fighter.CanAttack(player) && !ToFartoChase())
+			if (IsAggrevated() && fighter.CanAttack(player))
 			{
 				AttackBehaviour();
 			}
@@ -78,7 +78,10 @@ namespace RPG.Control
 
 		public void Aggrevate()
 		{
-			timeSinceAggrevated = 0;
+			if (ToFartoChase())
+			{
+				timeSinceAggrevated = 0;
+			}
 		}
 
 		private void UpdateTimers()

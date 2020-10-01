@@ -75,7 +75,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   dwellTime: 3
-  helpDistance: 8
+  helpDistance: 12
   patrolSpeedFraction: 0.4
 --- !u!1 &5705007858083435029
 GameObject:

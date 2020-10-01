@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 276fffc0048eef5459b9b6d830a1df48, type: 3}
-  m_Name: Fireball
+  m_Name: EnemyFireball
   m_EditorClassIdentifier: 
   animOverride: {fileID: 22100000, guid: d6def960591596f4386863f30370051b, type: 2}
   equippedPrefab: {fileID: 6258375623559899922, guid: e7decb04bc02d854dbd106a76acdcd9f,
     type: 3}
-  weaponDamage: 5
-  WeaponAttackSpeed: 2
-  percentageBonus: 10
-  weaponRange: 10
+  weaponDamage: 4
+  WeaponAttackSpeed: 1
+  percentageBonus: 0
+  weaponRange: 12
   isRightHanded: 0
-  projectile: {fileID: 7332144775401250525, guid: 88de580fcc3f8864fa2c9842cb39cf16,
+  projectile: {fileID: 6717439730512915877, guid: 3b702a4ed43ee604b9ab8effc8d79b42,
     type: 3}
