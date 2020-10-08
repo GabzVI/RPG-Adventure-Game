@@ -47,8 +47,7 @@ namespace RPG.Combat
 		{
 			if (Input.GetMouseButtonDown(1))
 			{
-				GameObject player = GameObject.FindWithTag("Player");
-				player.GetComponent<Mover>().MoveTo(gameObject.transform.position, chaseSpeed);
+				PickUp(callingController.GetComponent<FighterScript>());
 			}
 			return true;
 		}

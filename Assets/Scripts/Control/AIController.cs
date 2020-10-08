@@ -21,7 +21,7 @@ namespace RPG.Control
 		[SerializeField] float helpDistance = 8f;
 		[Range(0,1)]
 		[SerializeField] float patrolSpeedFraction = 0.2f;
-
+	
 		FighterScript fighter;
 		Health health;
 		GameObject player;

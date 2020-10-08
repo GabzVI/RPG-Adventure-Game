@@ -864,7 +864,7 @@ PrefabInstance:
     - target: {fileID: 8355522448820835622, guid: 3c747cdfecd2217449df39368d953f47,
         type: 3}
       propertyPath: chaseSpeed
-      value: 0.75
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c747cdfecd2217449df39368d953f47, type: 3}

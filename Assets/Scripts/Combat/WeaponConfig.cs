@@ -1,11 +1,12 @@
 ﻿using System;
 using RPG.Resources;
+using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Combat
 {
 	[CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Spawn New Weapon", order = 0)]
-	public class WeaponConfig : ScriptableObject
+	public class WeaponConfig : ScriptableObject, ISaveable
 	{
 		[SerializeField] AnimatorOverrideController animOverride = null;
 		[SerializeField] Weapon equippedPrefab = null;
@@ -100,6 +101,16 @@ namespace RPG.Combat
 		public float GetWeaponAttackSpeed()
 		{
 			return WeaponAttackSpeed;
+		}
+
+		public object CaptureState()
+		{
+			return WeaponAttackSpeed;
+		}
+
+		public void RestoreState(object state)
+		{
+			WeaponAttackSpeed = (float)state;
 		}
 	}
 }

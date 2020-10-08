@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using RPG.Saving;
 using RPG.Control;
+using RPG.Core;
 
 namespace RPG.SceneManagement
 {

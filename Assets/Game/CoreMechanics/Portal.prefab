@@ -111,3 +111,4 @@ MonoBehaviour:
   FadeInTimer: 1
   FadeOutTimer: 1.5
   FadeWaitTimer: 0.5
+  core: {fileID: 4701115412178729068, guid: ba67dbbf931164b498f7919050619aac, type: 3}

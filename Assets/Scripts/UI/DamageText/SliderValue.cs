@@ -39,7 +39,5 @@ public class SliderValue : MonoBehaviour
 			return;
 		}
 		
-		//rootCanvas.enabled = true;
-		
 	}
 }

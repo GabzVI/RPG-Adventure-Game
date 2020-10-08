@@ -16,12 +16,14 @@ namespace RPG.Core
 		[SerializeField] float minYScroll = 20f;
 		Vector3 vCameraPos;
 		// Update is called once per frame
-		private void Awake()
+		private void Start()
 		{
 			vCameraPos.x = player.transform.position.x;
 			vCameraPos.z = player.transform.position.z - 8.5f;
+			transform.position = vCameraPos;
 		}
-		void Update()
+
+		private void Update()
 		{
 			vCameraPos = gameObject.transform.position;
 			Cursor.lockState = CursorLockMode.Confined;

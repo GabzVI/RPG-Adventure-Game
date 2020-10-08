@@ -9,7 +9,7 @@ namespace RPG.Cinematics
 	//In order for this to work use UnityEngine.Playables with allows us to access our cinematics and use it.
 	public class CinematicTrigger : MonoBehaviour
 	{
-		bool alreadyTriggered = false;
+		public bool alreadyTriggered = false;
 
 		private void OnTriggerEnter(Collider other)
 		{

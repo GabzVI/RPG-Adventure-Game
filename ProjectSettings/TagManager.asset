@@ -8,6 +8,7 @@ TagManager:
   - DamageText
   - Raycastable
   - Building
+  - VirtualCamera
   layers:
   - Default
   - TransparentFX

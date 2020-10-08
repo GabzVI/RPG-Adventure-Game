@@ -29,6 +29,7 @@ namespace RPG.Control
 		[SerializeField] float maxDistanceNavProjection = 1f;
 		[SerializeField] float raycastRadius = 1f;
 		GameObject[] raycastableBuildings;
+	
 
 		private void Start()
 		{
