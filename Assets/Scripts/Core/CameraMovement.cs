@@ -15,8 +15,16 @@ namespace RPG.Core
 		[SerializeField] float maxYScroll = 120f;
 		[SerializeField] float minYScroll = 20f;
 		Vector3 vCameraPos;
+
 		// Update is called once per frame
 		private void Start()
+		{
+			vCameraPos.x = player.transform.position.x;
+			vCameraPos.z = player.transform.position.z - 8.5f;
+			transform.position = vCameraPos;
+		}
+
+		public void RecenterPlayer()
 		{
 			vCameraPos.x = player.transform.position.x;
 			vCameraPos.z = player.transform.position.z - 8.5f;

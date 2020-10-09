@@ -653,19 +653,6 @@ CapsuleCollider:
   m_Height: 1.9973083
   m_Direction: 1
   m_Center: {x: -0.020397872, y: 0.88776135, z: 0}
---- !u!114 &6742964890193509560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5562254424335221591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e318dafce873d5d4688eaaecc93204e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experiencePoints: 0
 --- !u!114 &6904465576021591808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +683,19 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   maxDistanceNavProjection: 1
   raycastRadius: 1
+--- !u!114 &5124664909427586803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5562254424335221591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318dafce873d5d4688eaaecc93204e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
 --- !u!1001 &644021150417158976
 PrefabInstance:
   m_ObjectHideFlags: 0

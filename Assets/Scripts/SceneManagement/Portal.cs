@@ -44,7 +44,7 @@ namespace RPG.SceneManagement
 		
 
 			//This will be used to not delete the portal after the user has gone to the other scene as coroutine deletes it automatically.
-			DontDestroyOnLoad(gameObject);
+			DontDestroyOnLoad(gameObject); 
 			Fader fader = FindObjectOfType<Fader>();
 			SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
 			PlayerController playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerController>();

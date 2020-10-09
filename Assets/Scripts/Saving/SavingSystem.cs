@@ -40,6 +40,7 @@ namespace RPG.Saving
 		private void SaveFile(string saveFile, object state)
 		{
 			string path = GetPathFromSaveFile(saveFile);
+			print("Saving From" + path);
 			//By using the "using" it will ensure that the filestream gets closed and doesnt continue running.
 			using (FileStream stream = File.Open(path, FileMode.Create))
 			{

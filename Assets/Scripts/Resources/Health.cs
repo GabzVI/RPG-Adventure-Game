@@ -8,6 +8,10 @@ using System;
 using UnityEngine.Events;
 using GameDevTV.Utils;
 using RPG.Saving;
+using RPG.Menu;
+using RPG.SceneManagement;
+
+
 namespace RPG.Resources
 {
 	public class Health : MonoBehaviour, ISaveable
@@ -74,7 +78,7 @@ namespace RPG.Resources
 			healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 			if (healthPoints.value == 0)
 			{
-				onDie.Invoke();
+				onDie?.Invoke();
 				if(gameObject.tag == "Enemy")
 				{
 					GetComponent<DropHealthPickUp>().SpawnHealthPickUp();
@@ -91,6 +95,11 @@ namespace RPG.Resources
 		public float GetHealthPoints()
 		{
 			return healthPoints.value;
+		}
+
+		public void SetHealthPoints(float _v)
+		{
+			healthPoints.value = _v;
 		}
 
 		public float GetMaxHealthPoints()
@@ -118,7 +127,15 @@ namespace RPG.Resources
 
 			GetComponent<Animator>().SetTrigger("die");
 			GetComponent<ActionScheduler>().CancelCurrentAction();
-			
+
+			if (gameObject.tag == "Player")
+			{
+				RPG.SceneManagement.SavingWrapper savingWrapper = FindObjectOfType<RPG.SceneManagement.SavingWrapper>();
+				savingWrapper.Save();
+				GameObject.FindGameObjectWithTag("Respawn").GetComponent<GameManager>().Restart();
+				isDead = false;
+			}
+
 		}
 
 		private void RegenereteHealth()
